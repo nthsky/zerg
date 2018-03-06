@@ -12,11 +12,17 @@ use think\Validate;
 
 class BaseValidate extends Validate
 {
-    public function goCheck(){
+    public function goCheck()
+    {
         $data = Request::instance()->param();
         $result = $this->check($data);
-        if(!$result){
-            throw new Exception($this->getError());
+        if(!$result)
+        {
+            throw new Exception($this->error);
+        }
+        else
+        {
+            return true;
         }
     }
 }
